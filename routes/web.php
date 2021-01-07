@@ -5,6 +5,12 @@ use Illuminate\Support\Facades\Route;
 Route::prefix('admin')->namespace('Admin')->group(function() {
 
     /**
+     * Rotas Profile
+     */
+    Route::any('profiles/search', 'ACL\ProfileController@search')->name('profiles.search');
+    Route::resource('profiles', 'ACL\ProfileController');
+
+    /**
      * Rotas Detalhes Plano
      */
     Route::get('plans/{url}/details/create', 'DetailPlanController@create')->name('details.plan.create');

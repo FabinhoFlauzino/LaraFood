@@ -233,10 +233,17 @@ return [
             'text'        => 'Planos',
             'url'         => 'admin/plans',
             'icon'        => 'far fa-list-alt',
-            'label'       => 10,
-            'label_color' => 'success',
+            //'label'       => 10,
+            //'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        [
+            'text'        => 'Perfil',
+            'url'         => 'admin/profiles',
+            'icon'        => 'far fa fa-address-book',
+            //'label'       => 10,
+            //'label_color' => 'success',
+        ],
+       /* ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -300,7 +307,7 @@ return [
             'text'       => 'information',
             'icon_color' => 'cyan',
             'url'        => '#',
-        ],
+        ],*/
     ],
 
     /*
