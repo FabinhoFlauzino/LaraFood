@@ -11,7 +11,6 @@
     <div class="card">
         <div class="card-body">
             <form action="{{ route('profiles.update', $profile->id) }}" class="form" method="POST">
-                @csrf
                 @method('PUT')
 
                 @include('admin.pages.profiles._partials.form')
