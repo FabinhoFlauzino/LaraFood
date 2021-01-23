@@ -3,15 +3,25 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->namespace('Admin')->group(function() {
-    /**
-     * Permission x Profile
-     */
 
-    Route::get('profile/{id}/permission/{idPermission}/detach', 'ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');
-    Route::post('profile/{id}/permissions', 'ACL\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
-    Route::any('profile/{id}/permissions/create', 'ACL\PermissionProfileController@permissionsAvaliable')->name('profiles.permissions.available');
-    Route::get('profile/{id}/permissions', 'ACL\PermissionProfileController@permissions')->name('profiles.permissions');
-    // Profile x Permission
+    /**
+     * Plan x Profile
+     */
+    Route::get('plans/{id}/profile/{idProfile}/detach', 'ACL\PlanProfileController@detachProfilePlan')->name('plans.profile.detach');
+    Route::post('plans/{id}/profiles', 'ACL\PlanProfileController@attachProfilesPlan')->name('plans.profiles.attach');
+    Route::any('plans/{id}/profiles/create', 'ACL\PlanProfileController@profilesAvaliable')->name('plans.profiles.available');
+    Route::get('plans/{id}/profiles', 'ACL\PlanProfileController@profiles')->name('plans.profiles');
+    // Profile x Plan
+    Route::get('profile/{id}/plans', 'ACL\PlanProfileController@plans')->name('profiles.plans');
+
+    /**
+     * Profile x Permission
+     */
+    Route::get('profiles/{id}/permission/{idPermission}/detach', 'ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');
+    Route::post('profiles/{id}/permissions', 'ACL\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
+    Route::any('profiles/{id}/permissions/create', 'ACL\PermissionProfileController@permissionsAvaliable')->name('profiles.permissions.available');
+    Route::get('profiles/{id}/permissions', 'ACL\PermissionProfileController@permissions')->name('profiles.permissions');
+    // Permission x Profile
     Route::get('permission/{id}/profiles', 'ACL\PermissionProfileController@profiles')->name('permissions.profiles');
 
     /**
