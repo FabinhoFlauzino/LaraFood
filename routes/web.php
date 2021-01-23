@@ -3,6 +3,16 @@
 use Illuminate\Support\Facades\Route;
 
 Route::prefix('admin')->namespace('Admin')->group(function() {
+    /**
+     * Permission x Profile
+     */
+
+    Route::get('profile/{id}/permission/{idPermission}/detach', 'ACL\PermissionProfileController@detachPermissionProfile')->name('profiles.permission.detach');
+    Route::post('profile/{id}/permissions', 'ACL\PermissionProfileController@attachPermissionsProfile')->name('profiles.permissions.attach');
+    Route::any('profile/{id}/permissions/create', 'ACL\PermissionProfileController@permissionsAvaliable')->name('profiles.permissions.available');
+    Route::get('profile/{id}/permissions', 'ACL\PermissionProfileController@permissions')->name('profiles.permissions');
+    // Profile x Permission
+    Route::get('permission/{id}/profiles', 'ACL\PermissionProfileController@profiles')->name('permissions.profiles');
 
     /**
      * Rotas Permission

@@ -1,23 +1,22 @@
 @extends('adminlte::page')
 
-@section('title', 'Permissões')
+@section('title', "Permissões disponiveis Perfil {$profile->name}")
 
 @section('content_header')
 
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="{{ route('permissions.index') }}">Permissões</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('profiles.index') }}">Perfis</a></li>
     </ol>
 
-    <h1>Permissões <a href="{{ route('permissions.create') }}" class="btn btn-dark">Adicionar Permissão</a></h1>
-
+    <h1>Permissões disponiveis Perfil <strong>{{ $profile->name }}</strong></h1>
 @stop
 
 
 @section('content')
     <div class="card">
         <div class="card-header">
-            <form action="{{ route('permissions.search') }}" method="POST" class="form form-inline" value="{{ $filters['filter'] ?? '' }}">
+            <form action="{{ route('profiles.permissions.available', $profile->id) }}" method="POST" class="form form-inline" value="{{ $filters['filter'] ?? '' }}">
                 @csrf
                 <input type="text" name="filter" placeholder="Nome" class="form-control">
                 <button type="submit" class="btn btn-dark"><i class="fa fa-search"></i></button>
@@ -28,22 +27,29 @@
             <table class="table table-condensed">
                 <thead>
                     <tr>
+                        <th width="50px">#</th>
                         <th>Nome</th>
-                        <th width="250">Ações</th>
                     </tr>
                 </thead>
-
                 <tbody>
-                    @foreach($permissions as $permission)
+                    <form action="{{ route('profiles.permissions.attach', $profile->id) }}" method="POST">
+                        @csrf
+
+                        @foreach($permissions as $permission)
+                            <tr>
+                                <td>
+                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }}">
+                                </td>
+                                <td>{{ $permission->name }}</td>
+                            </tr>
+                        @endforeach
+
                         <tr>
-                            <td>{{ $permission->name }}</td>
-                            <td style="width=120px">
-                                <a href="{{ route('permissions.edit', $permission->id) }}" class="btn btn-info">Edit</a>
-                                <a href="{{ route('permissions.show', $permission->id) }}" class="btn btn-warning">VER</a>
-                                <a href=" {{  route('permissions.profiles',$permission->id) }} " class="btn btn-warning"><i class="far fa fa-address-book"></i></a>
+                            <td colspan="500">
+                                <button type="submit" class="btn btn-success">Vincular</button>
                             </td>
                         </tr>
-                    @endforeach
+                    </form>
                 </tbody>
             </table>
         </div>

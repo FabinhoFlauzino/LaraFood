@@ -246,7 +246,7 @@ return [
         [
             'text'        => 'Permissões',
             'url'         => 'admin/permissions',
-            'icon'        => 'far fa fa-lock-open',
+            'icon'        => 'far fa fa-lock',
             //'label'       => 10,
             //'label_color' => 'success',
         ],
