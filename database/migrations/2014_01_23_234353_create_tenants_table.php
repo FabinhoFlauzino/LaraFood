@@ -20,7 +20,7 @@ class CreateTenantsTable extends Migration
             $table->string('name')->unique();
             $table->string('url')->unique();
             $table->string('email')->unique();
-            $table->string('logo')->unique();
+            $table->string('logo')->nullable();
 
             $table->enum('active', ['Y', 'N'])->default('Y');
 

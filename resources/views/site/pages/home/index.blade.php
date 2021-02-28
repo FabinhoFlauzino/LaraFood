@@ -1,9 +1,9 @@
 @extends('site.layouts.app')
 
 @section('content')
-<div class="section-title">
-        <h2>Pricing</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+    <div class="section-title">
+        <h2>Preço</h2>
+        <p>Valores que cabem no seu bolso, escolha o plano que mais se adeque a sua rotina e seu orçamento mensal.</p>
     </div>
 
     <div class="row">
@@ -21,12 +21,11 @@
 
                     </ul>
                     <div class="btn-wrap">
-                        <a href="#" class="btn-buy">Buy Now</a>
+                        <a href="{{ route('plan.subscription', $plan->url) }}" class="btn-buy">Assinar</a>
                     </div>
                 </div>
             </div>
         @endforeach
 
     </div>
-</div>
 @endsection
